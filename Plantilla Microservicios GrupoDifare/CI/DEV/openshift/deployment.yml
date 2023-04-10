@@ -1,0 +1,115 @@
+# ------------------- Route  ------------------- #
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: nombrecodigo-route
+  namespace: ocp-dev
+spec:
+  host: nombrecodigo.dev.apps.ocp4mqa.grupodifare.com
+  to:
+    kind: Service
+    name: nombrecodigo-services
+  port:
+    targetPort: http
+---
+# ------------------- Service ------------------- #
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nombrecodigo
+  name: nombrecodigo-services
+  namespace: ocp-dev
+spec:
+  ports:
+    - name: http
+      protocol: TCP 
+      port: 2000
+      targetPort: 80
+  selector:
+    app: nombrecodigo
+---
+# ------------------ Deployment ----------------- #
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nombrecodigo
+  name: nombrecodigo-deploy
+  namespace: ocp-dev
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: nombrecodigo
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 1
+  minReadySeconds: 2
+  template:
+    metadata:
+      labels:
+        app: nombrecodigo
+    spec:
+      serviceAccountName: default
+      nodeSelector:
+        DEV: "TRUE"
+      containers:
+      - name: nombrecodigo
+        image: dockernp.grupodifare.com/dev-nombrecodigo-image
+        resources:
+          limits:
+            cpu: "250m"
+            memory: 256Mi
+          requests:
+            cpu: "50m"
+            memory: 64Mi
+        ports:
+        - containerPort: 80
+          name: nombrecodigo
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /health/
+            port: 80
+          initialDelaySeconds: 10
+          timeoutSeconds: 3
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /health/
+            port: 80
+          initialDelaySeconds: 10
+          timeoutSeconds: 3
+          periodSeconds: 20
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            valueFrom:
+              configMapKeyRef:
+                name: dev-config
+                key: ASPNETCORE_ENVIRONMENT
+          - name: DATABASE
+            valueFrom:
+              configMapKeyRef:
+                name: dev-config
+                key: DATABASE
+          - name: EMAILSVC
+            valueFrom:
+              configMapKeyRef:
+                name: dev-config
+                key: EMAILSVC
+          - name: ENDPOINT
+            valueFrom:
+              configMapKeyRef:
+                name: dev-config
+                key: ELASTICSEARCH
+          - name: SERVICE_TRACE_LEVEL_LOG
+            valueFrom:
+              configMapKeyRef:
+                name: dev-config
+                key: SERVICE_TRACE_LEVEL_LOG
+      imagePullSecrets:
+       - name: nexus-secret

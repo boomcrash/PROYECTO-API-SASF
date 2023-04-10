@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <ServerGarbageCollection>false</ServerGarbageCollection>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GDifare.Utilitario.BaseDatos" Version="2.3.0" />
+    <PackageReference Include="GDifare.Utilitario.Comun" Version="2.3.0" />
+    <PackageReference Include="GDifare.Utilitario.Log" Version="2.3.0" />
+    <PackageReference Include="GDifare.Utilitario.Servicios" Version="1.2.0" />
+  </ItemGroup>
+
+</Project>

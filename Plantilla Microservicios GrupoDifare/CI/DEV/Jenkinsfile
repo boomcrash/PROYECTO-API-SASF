@@ -1,0 +1,6 @@
+@Library('dif-jenkins-shared-library') _
+
+devPipeline {
+  name = "nombrecodigo"
+  namespace = "ocp-dev"
+}

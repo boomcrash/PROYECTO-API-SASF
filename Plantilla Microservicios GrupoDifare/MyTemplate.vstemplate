@@ -1,0 +1,86 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Plantilla Microservicios GrupoDifare</Name>
+    <Description>Plantilla de proyecto para la creación de API's .NET Core para aplicaciones de GRUPO DIFARE.</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Plantilla Microservicios GrupoDifare</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.jfif</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="MicroserviciosGD1.csproj" File="MicroserviciosGD1.csproj" ReplaceParameters="true">
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
+      </Folder>
+      <Folder Name="CI" TargetFolderName="CI">
+        <Folder Name="DEV" TargetFolderName="DEV">
+          <Folder Name="openshift" TargetFolderName="openshift">
+            <ProjectItem ReplaceParameters="false" TargetFileName="deployment.yml">deployment.yml</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Jenkinsfile">Jenkinsfile</ProjectItem>
+        </Folder>
+        <Folder Name="PROD" TargetFolderName="PROD">
+          <Folder Name="openshift" TargetFolderName="openshift">
+            <ProjectItem ReplaceParameters="false" TargetFileName="deployment.yml">deployment.yml</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Jenkinsfile">Jenkinsfile</ProjectItem>
+        </Folder>
+        <Folder Name="QA" TargetFolderName="QA">
+          <Folder Name="openshift" TargetFolderName="openshift">
+            <ProjectItem ReplaceParameters="false" TargetFileName="deployment.yml">deployment.yml</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Jenkinsfile">Jenkinsfile</ProjectItem>
+        </Folder>
+        <Folder Name="SUP" TargetFolderName="SUP">
+          <Folder Name="openshift" TargetFolderName="openshift">
+            <ProjectItem ReplaceParameters="false" TargetFileName="deployment.yml">deployment.yml</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Jenkinsfile">Jenkinsfile</ProjectItem>
+        </Folder>
+        <Folder Name="UAT" TargetFolderName="UAT">
+          <Folder Name="openshift" TargetFolderName="openshift">
+            <ProjectItem ReplaceParameters="false" TargetFileName="deployment.yml">deployment.yml</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Jenkinsfile">Jenkinsfile</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Controllers" TargetFolderName="Controllers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="EjemploController.cs">EjemploController.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Datos" TargetFolderName="Datos">
+        <ProjectItem ReplaceParameters="true" TargetFileName="MapeoDatosEjemplo.cs">MapeoDatosEjemplo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Entidades" TargetFolderName="Entidades">
+		<Folder Name="Consultas" TargetFolderName="Consultas">
+			<ProjectItem ReplaceParameters="true" TargetFileName="ConsultarEjemploQuery.cs">ConsultarEjemploQuery.cs</ProjectItem>
+			<ProjectItem ReplaceParameters="true" TargetFileName="Ejemplo.cs">Ejemplo.cs</ProjectItem>
+			<ProjectItem ReplaceParameters="true" TargetFileName="ListarEjemplosQuery.cs">ListarEjemplosQuery.cs</ProjectItem>
+		</Folder>
+		<Folder Name="Operaciones" TargetFolderName="Operaciones">
+			<ProjectItem ReplaceParameters="true" TargetFileName="GrabarEjemploRequest.cs">GrabarEjemploRequest.cs</ProjectItem>
+			<ProjectItem ReplaceParameters="true" TargetFileName="GrabarEjemploResponse.cs">GrabarEjemploResponse.cs</ProjectItem>
+		</Folder>
+      </Folder>
+      <Folder Name="Procedures" TargetFolderName="Procedures">
+        <ProjectItem ReplaceParameters="false" TargetFileName="pr_ejemplo.sql">pr_ejemplo.sql</ProjectItem>
+      </Folder>
+      <Folder Name="Utils" TargetFolderName="Utils">
+        <ProjectItem ReplaceParameters="true" TargetFileName="MensajesEjemplos.cs">MensajesEjemplos.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="StringHandler.cs">StringHandler.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.json">appsettings.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Development.json">appsettings.Development.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Dockerfile">Dockerfile</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="nuget.config">nuget.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Startup.cs">Startup.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

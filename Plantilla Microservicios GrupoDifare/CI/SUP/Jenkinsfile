@@ -1,0 +1,6 @@
+@Library('dif-jenkins-shared-library') _
+
+supPipeline {
+  name = "nombrecodigo"
+  namespace = "ocp-sup"
+}

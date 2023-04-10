@@ -1,0 +1,6 @@
+@Library('dif-jenkins-shared-library') _
+
+prdPipeline {
+  name = "nombrecodigo"
+  namespace = "ocp-prod"
+}

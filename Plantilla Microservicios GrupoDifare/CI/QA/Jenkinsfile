@@ -1,0 +1,6 @@
+@Library('dif-jenkins-shared-library') _
+
+qaPipeline {
+  name = "nombrecodigo"
+  namespace = "ocp-qa"
+}
